@@ -1,0 +1,74 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'io.virtualapp'
+
+    defaultConfig {
+        applicationId "io.virtualapp"
+        minSdk 23
+        targetSdk 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        android {
+            defaultConfig {
+                ndk {
+                    abiFilters "x86"
+                }
+            }
+        }
+
+        lintOptions {
+            abortOnError false
+            ignore 'DuplicateIds'
+        }
+    }
+
+    sourceSets {
+        main{
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    compileSdk 26
+    buildToolsVersion '30.0.3'
+    ndkVersion '25.1.8937393'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation project('lib')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    //Android Lib
+    implementation 'com.android.support:multidex:1.0.2'
+    implementation 'com.android.support:appcompat-v7:25.4.0'
+    implementation 'com.melnykov:floatingactionbutton:1.3.0'
+    implementation 'com.android.support:recyclerview-v7:25.4.0'
+    implementation 'com.android.support:percent:25.4.0'
+    implementation 'com.android.support:design:25.4.0'
+    implementation 'com.android.support:cardview-v7:25.4.0'
+    //Promise Support
+    implementation 'org.jdeferred:jdeferred-android-aar:1.2.4'
+    // ThirdParty
+    implementation 'com.jonathanfinerty.once:once:1.0.3'
+    implementation 'com.flurry.android:analytics:6.9.2'
+    implementation 'com.kyleduo.switchbutton:library:1.4.6'
+}
