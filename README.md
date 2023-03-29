@@ -1,0 +1,2 @@
+# VirtualAppSample
+因为VirutalApp官方项目不再更新，无法在新版本的AS上编译通过。对官方的原版项目稍作修改，以便用新版AndroidStudio直接编译运行项目，但是要求的Android Api<=26
